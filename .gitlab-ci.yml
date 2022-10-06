@@ -11,7 +11,7 @@ build backend:
   - main
  script:
   - ./mvnw package
-  - docker build -t web-project .
+  - docker build --platform linux/x86_64 -t web-project .
 
 deploy backend:
  stage: deploy
