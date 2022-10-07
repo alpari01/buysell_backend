@@ -1,9 +1,15 @@
 package ee.taltech.iti0302.user;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class User {
 
+    @Id
     private Integer id;
     private String firstName;
     private String lastName;
