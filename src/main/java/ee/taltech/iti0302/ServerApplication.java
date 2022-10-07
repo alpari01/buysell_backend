@@ -2,7 +2,10 @@ package ee.taltech.iti0302;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 @SpringBootApplication
 public class ServerApplication {
 
@@ -10,4 +13,8 @@ public class ServerApplication {
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
+	@GetMapping("/api")
+	public String test() {
+		return "test";
+	}
 }
