@@ -15,6 +15,6 @@ public class ServerApplication {
 
 	@GetMapping("/api")
 	public String test() {
-		return "test";
+		return "test1";
 	}
 }
