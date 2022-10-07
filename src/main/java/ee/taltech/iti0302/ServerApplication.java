@@ -13,7 +13,7 @@ public class ServerApplication {
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
-	@GetMapping("/api/test")
+	@GetMapping("/api")
 	public String test() {
 		return "test";
 	}
