@@ -1,10 +1,10 @@
 ## What's this?
-Backend project for a [website](http://buysell.hopto.org) where people can sell their own products, as well as buy, comment and rate other people's products.
+**Backend** project for a [website](http://buysell.hopto.org) where people can sell their own products, as well as buy, comment and rate other people's products.
 
 ## Technologies for development
-- Java JDK 17
-- Development environment suitable for the Java JDK (for example, IntelliJ IDEA)
-- Docker (to run the database locally)
+- **Java JDK 17, as programming language**
+- Development environment suitable for the Java JDK (for example, **IntelliJ IDEA**)
+- **Docker** (to run the database locally)
 
 ## Config properties
 
@@ -26,3 +26,5 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 ## Local setup for development
 1. Clone the project to the development environment.
 2. 
+
+## ...
