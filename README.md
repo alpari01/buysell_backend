@@ -4,7 +4,7 @@ Backend project for a [website](http://buysell.hopto.org) where people can sell 
 ## Technologies for development
 - Java JDK 17
 - Development environment suitable for the Java JDK (for example, IntelliJ IDEA)
-- Docker (to run the project locally)
+- Docker (to run the database locally)
 
 ## Config properties
 
