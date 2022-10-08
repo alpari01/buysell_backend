@@ -19,7 +19,7 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 1. Url address of the database where it is located, as well as the port*
 2. Nickname to connect to the database*
 3. Password to connect to the database*
-4. Driver allows Java programs to connect to a PostgreSQL database using standard, database independent Java code
+4. Driver that allows Java programs to connect to a PostgreSQL database using standard, database independent Java code
 
 *that is specified in the docker-compose.yml file on the server
 
