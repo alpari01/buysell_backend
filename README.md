@@ -12,14 +12,14 @@
 
 [application.properties](https://gitlab.cs.ttu.ee/alpari/iti0302-2022-server/-/blob/main/src/main/resources/application.properties)
 ```
-spring.datasource.url=jdbc:postgresql://193.40.255.18:5432/postgres
-spring.datasource.username=postgres 
-spring.datasource.password=docker
+spring.datasource.url=jdbc:postgresql://${ip_address}:${port}/postgres
+spring.datasource.username=${username}
+spring.datasource.password=${password}
 spring.datasource.driver-class-name=org.postgresql.Driver
 ```
 
 1. Url address of the database where it is located, as well as the port*
-2. Nickname to connect to the database*
+2. Username to connect to the database*
 3. Password to connect to the database*
 4. Driver that allows Java programs to connect to a PostgreSQL database using standard, database independent Java code
 
@@ -64,10 +64,10 @@ create table users
 1. Register on the [docker hub website](https://hub.docker.com) and create your project.
 2. Launch docker desktop.
 3. Build the project .jar file using Maven with ```clean```, ```package``` commands.
-4. In the console in the folder with the cloned project enter ```docker build –t project-name .``` to create docker image.
-5. Enter ```docker tag image-name:latest repo-name/image-name:latest``` to tag image.
+4. In the console in the folder with the cloned project enter ```docker build –t ${project_name} .``` to create docker image.
+5. Enter ```docker tag ${image-name}:latest ${repo-name}/${image-name}:latest``` to tag image.
 6. Enter ```docker login``` to log in to docker hub.
-7. Enter ```docker push repo-name/image-name:latest``` to push image.
+7. Enter ```docker push ${repo-name}/${image-name}:latest``` to push image.
 8. Create on your computer or somewhere else **docker-compose.yml** file.
 9. Add the following statement to it (configure relative to created docker image):
 ```
