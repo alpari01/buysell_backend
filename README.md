@@ -83,3 +83,7 @@ services:
                         - /home/ubuntu/web-project/application.properties:/app/application.properties
 ```
 10. Run the docker container through the console, in the folder with **docker-compose.yml** file enter ```docker-compose up -d```
+
+## Website authors
+- **Ilja Lastovko**. Discord: Ilja Lastovko#1870
+- **Alan Parik**. Discord: APMeister#5717
