@@ -37,6 +37,7 @@ spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
 spring.datasource.username=postgres
 spring.datasource.password=docker
 spring.datasource.driver-class-name=org.postgresql.Driver
+spring.liquibase.change-log= classpath:/db/changelog/changelog-master.xml
 ```
 7. Connect to local PostgreSQL database in development environment (IntelliJ IDEA)
 - **host**: localhost
@@ -44,21 +45,7 @@ spring.datasource.driver-class-name=org.postgresql.Driver
 - **user**: postgres
 - **password**: docker
 - **url**: jdbc:postgresql://localhost:5432/postgres
-8. When connect for the first time, create the following tables in local database:
-```
-create table users
-(
-    first_name text,
-    last_name  text,
-    nickname   text,
-    email      text,
-    birthdate  date,
-    id         integer
-        constraint table_name_pk
-            primary key
-);
-```
-9. Run src/main/java/ee/taltech/iti0302/**ServerApplication.java** file with the "local" active profile
+8. Run src/main/java/ee/taltech/iti0302/**ServerApplication.java** file with the "local" active profile
 
 ## Deploying
 1. Build a .jar file for deployment 
