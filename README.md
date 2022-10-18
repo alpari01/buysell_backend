@@ -16,14 +16,14 @@ spring.datasource.url=jdbc:postgresql://${ip_address}:${port}/postgres
 spring.datasource.username=${username}
 spring.datasource.password=${password}
 spring.datasource.driver-class-name=org.postgresql.Driver
+spring.liquibase.change-log= classpath:/db/changelog/changelog-master.xml
 ```
 
-1. Url address of the database where it is located, as well as the port*
-2. Username to connect to the database*
-3. Password to connect to the database*
+1. Url address of the database where it is located, as well as the port
+2. Username to connect to the database
+3. Password to connect to the database
 4. Driver that allows Java programs to connect to a PostgreSQL database using standard, database independent Java code
-
-*that is specified in the docker-compose.yml file on the server
+5. Liquibase library that helps automatically create server tables locally
 
 ## Local setup for development
 1. Clone the project to the development environment (IntelliJ IDEA).
