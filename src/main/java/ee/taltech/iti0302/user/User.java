@@ -13,18 +13,16 @@ public class User {
     private Integer id;
     private String firstName;
     private String lastName;
-    private String nickname;
     private String email;
     private String password;
     private LocalDate birthdate;
     private String gender;
 
-    public User(Integer id, String firstName, String lastName, String nickname, String email,
+    public User(Integer id, String firstName, String lastName, String email,
                 String password, LocalDate birthdate, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.nickname = nickname;
         this.email = email;
         this.birthdate = birthdate;
         this.password = password;
@@ -56,14 +54,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -104,9 +94,10 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", nickname='" + nickname + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", birthdate=" + birthdate +
+                ", gender='" + gender + '\'' +
                 '}';
     }
 }
