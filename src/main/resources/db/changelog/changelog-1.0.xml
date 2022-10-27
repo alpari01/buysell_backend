@@ -25,4 +25,9 @@
             <column name="password" type="text" />
         </addColumn>
     </changeSet>
+    <changeSet  author="Alan Parik"  id="3">
+        <dropColumn tableName="users">
+            <column name="nickname" />
+        </dropColumn>
+    </changeSet>
 </databaseChangeLog>
