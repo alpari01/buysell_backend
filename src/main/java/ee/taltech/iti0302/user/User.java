@@ -15,15 +15,20 @@ public class User {
     private String lastName;
     private String nickname;
     private String email;
+    private String password;
     private LocalDate birthdate;
+    private String gender;
 
-    public User(Integer id, String firstName, String lastName, String nickname, String email, LocalDate birthdate) {
+    public User(Integer id, String firstName, String lastName, String nickname, String email,
+                String password, LocalDate birthdate, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.nickname = nickname;
         this.email = email;
         this.birthdate = birthdate;
+        this.password = password;
+        this.gender = gender;
     }
 
     public User(){
@@ -75,6 +80,22 @@ public class User {
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Override

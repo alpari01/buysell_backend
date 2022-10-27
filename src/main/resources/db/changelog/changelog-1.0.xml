@@ -19,4 +19,10 @@
             <column  name="birthdate"  type="date" />
         </createTable>
     </changeSet>
+    <changeSet  author="Alan Parik"  id="2">
+        <addColumn tableName="users">
+            <column name="gender" type="text" />
+            <column name="password" type="text" />
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
