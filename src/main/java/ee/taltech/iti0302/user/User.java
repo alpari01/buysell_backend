@@ -30,18 +30,4 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Product> products;
-
-    public User(Integer id, String firstName, String lastName, String email,
-                String password, LocalDate birthdate, String gender) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.birthdate = birthdate;
-        this.password = password;
-        this.gender = gender;
-    }
-
-    public User(){
-    }
 }
