@@ -1,5 +1,6 @@
 package ee.taltech.iti0302.user;
 
+import ee.taltech.iti0302.product.Product;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter @Setter
 @Entity
@@ -24,6 +27,9 @@ public class User {
     private String password;
     private LocalDate birthdate;
     private String gender;
+
+    @OneToMany(mappedBy = "user")
+    private List<Product> products;
 
     public User(Integer id, String firstName, String lastName, String email,
                 String password, LocalDate birthdate, String gender) {
