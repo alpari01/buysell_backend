@@ -19,15 +19,31 @@
             <column  name="birthdate"  type="date" />
         </createTable>
     </changeSet>
+
     <changeSet  author="Alan Parik"  id="2">
         <addColumn tableName="users">
             <column name="gender" type="text" />
             <column name="password" type="text" />
         </addColumn>
     </changeSet>
+
     <changeSet  author="Alan Parik"  id="3">
         <dropColumn tableName="users">
             <column name="nickname" />
         </dropColumn>
     </changeSet>
+
+    <changeSet  author="Ilja Lastovko"  id="4">
+        <createTable tableName="product">
+            <column  name="id"  type="INTEGER">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false" foreignKeyName="fk_product_users" references="users(id)"/>
+            </column>
+            <column name="name" type="text" />
+            <column name="description" type="text" />
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
