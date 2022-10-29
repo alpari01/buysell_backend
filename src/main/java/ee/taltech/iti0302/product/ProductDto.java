@@ -4,8 +4,7 @@ public class ProductDto {
 
     private Integer id;
     private String name;
-    private String userName;
-    private String lastName;
+    private String description;
 
     public Integer getId() {
         return id;
@@ -23,19 +22,11 @@ public class ProductDto {
         this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
