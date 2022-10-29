@@ -28,18 +28,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Product> products;
 
-    public User(Integer id, String firstName, String lastName, String email, String password,
-                LocalDate birthdate, String gender, List<Product> products) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.birthdate = birthdate;
-        this.gender = gender;
-        this.products = products;
-    }
-
     public User() {
     }
 

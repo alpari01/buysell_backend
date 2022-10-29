@@ -24,13 +24,6 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Product(Integer id, String name, String description, User user) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.user = user;
-    }
-
     public Product() {
     }
 
