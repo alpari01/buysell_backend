@@ -71,4 +71,24 @@
     <changeSet  author="Ilja Lastovko"  id="9">
         <addAutoIncrement tableName="users" columnName="id" incrementBy="1" startWith="0"/>
     </changeSet>
+
+    <changeSet  author="Alan Parik"  id="10">
+        <addAutoIncrement tableName="product" columnName="id" incrementBy="1" startWith="0"/>
+    </changeSet>
+
+    <changeSet  author="Alan Parik"  id="11">
+        <renameColumn tableName="product" oldColumnName="user_id" newColumnName="userId" />
+    </changeSet>
+
+    <changeSet  author="Alan Parik"  id="12">
+        <dropColumn tableName="product" columnName="userId" />
+    </changeSet>
+
+    <changeSet  author="Alan Parik"  id="13">
+        <addColumn tableName="product">
+            <column name="userId" type="INTEGER">
+                <constraints nullable="false" foreignKeyName="fk_product_users" references="users(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
