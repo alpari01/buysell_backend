@@ -63,4 +63,12 @@
         <modifyDataType tableName="product" columnName="id" newDataType="SERIAL"/>
         <modifyDataType tableName="product" columnName="user_id" newDataType="SERIAL"/>
     </changeSet>
+
+    <changeSet  author="Ilja Lastovko"  id="8">
+        <addAutoIncrement tableName="users" columnName="id" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet  author="Ilja Lastovko"  id="9">
+        <addAutoIncrement tableName="users" columnName="id" incrementBy="1" startWith="0"/>
+    </changeSet>
 </databaseChangeLog>
