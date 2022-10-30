@@ -46,4 +46,21 @@
         </createTable>
     </changeSet>
 
+    <changeSet  author="Ilja Lastovko"  id="5">
+        <modifyDataType tableName="users" columnName="id" newDataType="SERIAL"/>
+        <modifyDataType tableName="product" columnName="id" newDataType="SERIAL"/>
+        <modifyDataType tableName="product" columnName="user_id" newDataType="SERIAL"/>
+    </changeSet>
+
+    <changeSet  author="Ilja Lastovko"  id="6">
+        <modifyDataType tableName="users" columnName="id" newDataType="int"/>
+        <modifyDataType tableName="product" columnName="id" newDataType="int"/>
+        <modifyDataType tableName="product" columnName="user_id" newDataType="int"/>
+    </changeSet>
+
+    <changeSet  author="Ilja Lastovko"  id="7">
+        <modifyDataType tableName="users" columnName="id" newDataType="SERIAL"/>
+        <modifyDataType tableName="product" columnName="id" newDataType="SERIAL"/>
+        <modifyDataType tableName="product" columnName="user_id" newDataType="SERIAL"/>
+    </changeSet>
 </databaseChangeLog>

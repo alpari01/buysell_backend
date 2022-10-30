@@ -2,6 +2,7 @@ package ee.taltech.iti0302.service;
 
 import ee.taltech.iti0302.dto.UserDto;
 import ee.taltech.iti0302.mapper.UserMapper;
+import ee.taltech.iti0302.models.User;
 import ee.taltech.iti0302.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,9 @@ public class UserService {
 
     public List<UserDto> getUsers() {
         return userMapper.toDtoList(userRepository.findAll());
+    }
+
+    public void addUser(User user) {
+        userRepository.save(user);
     }
 }
