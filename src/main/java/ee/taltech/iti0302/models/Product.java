@@ -1,6 +1,5 @@
-package ee.taltech.iti0302.product;
+package ee.taltech.iti0302.models;
 
-import ee.taltech.iti0302.user.User;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package ee.taltech.iti0302.product;
+package ee.taltech.iti0302.dto;
 
 import lombok.Data;
 

@@ -1,5 +1,7 @@
-package ee.taltech.iti0302.user;
+package ee.taltech.iti0302.mapper;
 
+import ee.taltech.iti0302.dto.UserDto;
+import ee.taltech.iti0302.models.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
