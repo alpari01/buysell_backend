@@ -91,4 +91,8 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet  author="Alan Parik"  id="14">
+        <renameColumn tableName="product" oldColumnName="userId" newColumnName="user_id" />
+    </changeSet>
 </databaseChangeLog>
