@@ -10,7 +10,7 @@ build backend:
  tags:
   - main
  script:
-  - ./mvnw package
+  - ./mvnw clean package
   - docker build -t web-project .
 
 deploy backend:
