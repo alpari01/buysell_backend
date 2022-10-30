@@ -23,12 +23,14 @@ public class UserService {
     public void addUser(UserDto userDto) {
         try {
             User user = new User();
+            user.setId(userDto.getId());
             user.setFirstName(userDto.getFirstName());
             user.setLastName(userDto.getLastName());
             user.setEmail(userDto.getEmail());
             user.setPassword(userDto.getPassword());
             user.setBirthdate(userDto.getBirthdate());
             user.setGender(userDto.getGender());
+            userRepository.save(user);
         } catch (Exception e) {
             e.printStackTrace();
         }
