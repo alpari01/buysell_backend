@@ -20,7 +20,17 @@ public class UserService {
         return userMapper.toDtoList(userRepository.findAll());
     }
 
-    public void addUser(User user) {
-        userRepository.save(user);
+    public void addUser(UserDto userDto) {
+        try {
+            User user = new User();
+            user.setFirstName(userDto.getFirstName());
+            user.setLastName(userDto.getLastName());
+            user.setEmail(userDto.getEmail());
+            user.setPassword(userDto.getPassword());
+            user.setBirthdate(userDto.getBirthdate());
+            user.setGender(userDto.getGender());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

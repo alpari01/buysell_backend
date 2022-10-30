@@ -1,7 +1,6 @@
 package ee.taltech.iti0302.controller;
 
 import ee.taltech.iti0302.dto.UserDto;
-import ee.taltech.iti0302.models.User;
 import ee.taltech.iti0302.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/api/users")
-    public void registerNewEmployee(@RequestBody User user) {
-        userService.addUser(user);
+    public void registerNewEmployee(@RequestBody UserDto userDto) {
+        userService.addUser(userDto);
     }
 }
