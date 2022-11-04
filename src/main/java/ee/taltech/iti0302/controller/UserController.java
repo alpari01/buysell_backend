@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/api/users")
-    public void registerNewEmployee(@RequestBody UserDto userDto) {
+    public void addUser(@RequestBody UserDto userDto) {
         userService.addUser(userDto);
     }
 }
