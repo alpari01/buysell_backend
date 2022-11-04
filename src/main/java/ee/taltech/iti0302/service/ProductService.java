@@ -22,10 +22,7 @@ public class ProductService {
 
     public void addProduct(ProductDto productDto) {
         try {
-            Product product = new Product();
-            product.setUserId(productDto.getUserId());
-            product.setName(productDto.getName());
-            product.setDescription(productDto.getDescription());
+            Product product = productMapper.dtoTo(productDto);
             productRepository.save(product);
         } catch (Exception e) {
             e.printStackTrace();
