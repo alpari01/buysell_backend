@@ -22,7 +22,7 @@ public class ProductService {
 
     public void addProduct(ProductDto productDto) {
         try {
-            Product product = productMapper.dtoTo(productDto);
+            Product product = productMapper.dtoToEntity(productDto);
             productRepository.save(product);
         } catch (Exception e) {
             e.printStackTrace();

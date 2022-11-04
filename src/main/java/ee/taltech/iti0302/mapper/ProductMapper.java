@@ -10,9 +10,8 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
 
-    ProductDto toDto(Product product);
-
-    Product dtoTo(ProductDto productDto);
+    ProductDto entityToDto(Product product);
+    Product dtoToEntity(ProductDto productDto);
 
     List<ProductDto> toDtoList(List<Product> products);
 }

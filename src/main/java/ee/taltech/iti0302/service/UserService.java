@@ -22,7 +22,7 @@ public class UserService {
 
     public void addUser(UserDto userDto) {
         try {
-            User user = userMapper.dtoTo(userDto);
+            User user = userMapper.dtoToEntity(userDto);
             userRepository.save(user);
         } catch (Exception e) {
             e.printStackTrace();
