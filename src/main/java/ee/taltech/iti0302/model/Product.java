@@ -1,4 +1,4 @@
-package ee.taltech.iti0302.models;
+package ee.taltech.iti0302.model;
 
 import lombok.Getter;
 import lombok.Setter;
