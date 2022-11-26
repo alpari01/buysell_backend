@@ -5,6 +5,7 @@ import ee.taltech.iti0302.exception.ApplicationException;
 import ee.taltech.iti0302.mapper.UserMapper;
 import ee.taltech.iti0302.model.User;
 import ee.taltech.iti0302.repository.UserRepository;
+import ee.taltech.iti0302.security.LoginResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,16 @@ public class UserService {
         User user = userMapper.dtoToEntity(userDto);
         user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
         userRepository.save(user);
+    }
+
+    public LoginResponse login(String email, String password) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        User user = optionalUser.orElseThrow(() -> new ApplicationException("User not found"));
+        if (bCryptPasswordEncoder.matches(password, user.getPassword())) {
+            // TODO
+            return null;
+        } else {
+            throw new ApplicationException("Wrond email or password");
+        }
     }
 }

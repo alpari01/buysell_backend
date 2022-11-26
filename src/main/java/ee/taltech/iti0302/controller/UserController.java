@@ -1,6 +1,8 @@
 package ee.taltech.iti0302.controller;
 
 import ee.taltech.iti0302.dto.UserDto;
+import ee.taltech.iti0302.security.LoginRequest;
+import ee.taltech.iti0302.security.LoginResponse;
 import ee.taltech.iti0302.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +28,10 @@ public class UserController {
     @PostMapping("api/public/users")
     public void createUser(@RequestBody UserDto userDto) {
         userService.createUser(userDto);
+    }
+
+    @PostMapping("api/public/login")
+    public LoginResponse login(@RequestBody LoginRequest request) {
+        return userService.login(request.getEmail(), request.getPassword());
     }
 }
