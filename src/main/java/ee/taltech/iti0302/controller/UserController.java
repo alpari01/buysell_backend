@@ -23,8 +23,8 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping("/api/users")
-    public void addUser(@RequestBody UserDto userDto) {
-        userService.addUser(userDto);
+    @PostMapping("api/public/users")
+    public void createUser(@RequestBody UserDto userDto) {
+        userService.createUser(userDto);
     }
 }
