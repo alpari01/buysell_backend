@@ -12,7 +12,7 @@ public class MemeController {
 
     private final MemeService memeService;
 
-    @GetMapping("/api/meme")
+    @GetMapping("/api/public/meme")
     public String getMeme() {
         return memeService.getMemeUrl();
     }
