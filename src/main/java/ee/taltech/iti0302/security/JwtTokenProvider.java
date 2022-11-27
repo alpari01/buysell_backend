@@ -15,7 +15,7 @@ public class JwtTokenProvider {
 
     public static String generateToken(String userName) {
         long currentTimeMs = System.currentTimeMillis();
-        long tokenDuration = 1000 * 60 * 60;
+        long tokenDuration = 3600000;
         Map<String, Object> claims = new HashMap<>();
         claims.put("userName", userName);
 

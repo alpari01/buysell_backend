@@ -4,7 +4,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -20,7 +19,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @Component
 @AllArgsConstructor
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -43,10 +41,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     }
 
     private Claims parseToken(String token) {
-            return (Claims) Jwts.parserBuilder()
+            return Jwts.parserBuilder()
                 .setSigningKey(JwtTokenProvider.key)
                 .build()
-                .parse(token)
+                .parseClaimsJwt(token)
                 .getBody();
     }
 
