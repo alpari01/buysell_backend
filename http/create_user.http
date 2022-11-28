@@ -1,0 +1,27 @@
+
+POST http://localhost:9000/api/public/users
+Content-Type: application/json
+
+{
+  "firstName": "Test",
+  "lastName": "Test",
+  "email": "test@gmail.com",
+  "birthdate": "1970-01-01",
+  "password": "test",
+  "gender": "Male"
+}
+
+###
+POST http://localhost:9000/api/public/login
+Content-Type: application/json
+
+
+{
+  "email": "test@gmail.com",
+  "password": "test"
+}
+
+###
+GET http://localhost:9000/api/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwidXNlck5hbWUiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTY2OTU1OTc2MSwiZXhwIjoxNjY5NTYzMzYxfQ.H0zTr087-LVaxes51LPd5g9cTCUx-b6JTWI9RIr_Lg4
