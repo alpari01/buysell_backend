@@ -6,24 +6,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 public class JwtTokenProvider {
-    private static final byte[] keyBytes = Decoders.BASE64.decode("bXkgc2VjcmV0IHN1cGVyIHNlY3JldCBhbmQgbG9uZyBlbm91Z2ggc2VjcmV0");
-    public static final Key key = Keys.hmacShaKeyFor(keyBytes);
+    public static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final long TOKEN_DURATION = 3600000;
 
-    public static String generateToken(String userName) {
+    public static String generateToken(String email) {
         long currentTimeMs = System.currentTimeMillis();
-        long tokenDuration = 3600000;
+
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userName", userName);
+        claims.put("email", email);
 
         return Jwts.builder()
             .setSubject("subject")
             .addClaims(claims)
             .setIssuedAt(new Date(currentTimeMs))
-            .setExpiration(new Date(currentTimeMs + tokenDuration))
+            .setExpiration(new Date(currentTimeMs + TOKEN_DURATION))
             .signWith(key)
             .compact();
     }

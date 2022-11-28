@@ -41,10 +41,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     }
 
     private Claims parseToken(String token) {
-            return Jwts.parserBuilder()
+        return Jwts.parserBuilder()
                 .setSigningKey(JwtTokenProvider.key)
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 
@@ -57,8 +57,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     }
 
     private UsernamePasswordAuthenticationToken buildAuthToken(Claims claims) {
-        return new UsernamePasswordAuthenticationToken(claims.get("userName"), // Set info (can be an DTO) of logged in user
-            "",
-            List.of(new SimpleGrantedAuthority("USER"))); // List of roles
+        return new UsernamePasswordAuthenticationToken(claims.get("email"), // Set info (can be an DTO) of logged in user
+                "",
+                List.of(new SimpleGrantedAuthority("USER"))); // List of roles
     }
 }
