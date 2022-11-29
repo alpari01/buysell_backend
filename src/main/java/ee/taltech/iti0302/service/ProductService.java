@@ -4,10 +4,12 @@ import ee.taltech.iti0302.dto.ProductDto;
 import ee.taltech.iti0302.exception.ApplicationException;
 import ee.taltech.iti0302.mapper.ProductMapper;
 import ee.taltech.iti0302.model.Product;
+import ee.taltech.iti0302.model.User;
 import ee.taltech.iti0302.repository.ProductCriteriaRepository;
 import ee.taltech.iti0302.repository.ProductFilter;
 import ee.taltech.iti0302.repository.ProductRepository;
 import ee.taltech.iti0302.repository.ProductResponse;
+import ee.taltech.iti0302.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final UserRepository userRepository;
     private final ProductMapper productMapper;
     private final ProductCriteriaRepository productCriteriaRepository;
 
@@ -48,5 +51,11 @@ public class ProductService {
         if (optionalProduct.isEmpty()) throw new ApplicationException("Product not found");
         Product product = productMapper.dtoToEntity(productDto);
         productRepository.save(product);
+    }
+
+    public List<ProductDto> getProductsByUserId(Integer userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = optionalUser.orElseThrow(() -> new ApplicationException("User not found"));
+        return productMapper.toDtoList(user.getProducts());
     }
 }
