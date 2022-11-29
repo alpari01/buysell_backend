@@ -41,3 +41,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlb
   "name": "RARARARARA",
   "description": "OJOJOJOJOJO"
 }
+
+###
+GET http://localhost:9000/api/products/56
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5NzM4NzY2LCJleHAiOjE2Njk3NDIzNjZ9.VrwCsQPhIby2Pup3rf-tNOlDm6NyLuBD1XYF3F1zwVE
