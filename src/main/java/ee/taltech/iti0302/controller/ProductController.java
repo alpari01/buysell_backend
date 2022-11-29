@@ -21,32 +21,32 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/api/products")
+    @GetMapping("/api/public/products")
     public List<ProductDto> getProducts() {
         return productService.getProducts();
     }
 
-    @GetMapping("/api/products/{userId}")
+    @GetMapping("/api/public/products/{userId}")
     public List<ProductDto> getProductsByUserId(@PathVariable("userId") Integer id) {
         return productService.getProductsByUserId(id);
     }
 
-    @PostMapping("/api/products")
+    @PostMapping("/api/public/products")
     public void addProduct(@RequestBody ProductDto productDto) {
         productService.addProduct(productDto);
     }
 
-    @DeleteMapping("/api/products/{productId}")
+    @DeleteMapping("/api/public/products/{productId}")
     public void deleteProduct(@PathVariable("productId") Integer id) {
         productService.deleteProductById(id);
     }
 
-    @PutMapping("/api/products/{productId}")
+    @PutMapping("/api/public/products/{productId}")
     public void updateProduct(@RequestBody ProductDto productDto, @PathVariable("productId") Integer id) {
         productService.updateProductById(productDto, id);
     }
 
-    @GetMapping("/api/products2")
+    @GetMapping("/api/public/products2")
     public ProductResponse getProducts2(int page, String orderBy, String name) {
         ProductFilter filter = new ProductFilter(page, orderBy, name);
         return productService.search(filter);
