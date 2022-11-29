@@ -29,3 +29,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwidXNlck5hbWUiO
 ###
 DELETE http://localhost:9000/api/products/50
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5NzM0MjI2LCJleHAiOjE2Njk3Mzc4MjZ9.ScuVq3SpvOeCxNPflvgNVd1_oXCIasr6uF_s89f6EpE
+
+###
+PUT http://localhost:9000/api/products/43
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5NzM1OTg4LCJleHAiOjE2Njk3Mzk1ODh9.ML4gxjIkCqVNi8Q4KlpZuVg3lqWxe6LJqtj0bZaNk-g
+
+{
+  "id": 42,
+  "userId": 57,
+  "name": "RARARARARA",
+  "description": "OJOJOJOJOJO"
+}

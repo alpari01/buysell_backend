@@ -42,4 +42,11 @@ public class ProductService {
         Product product = optionalProduct.orElseThrow(() -> new ApplicationException("Product not found"));
         productRepository.deleteById(product.getId());
     }
+
+    public void updateProductById(ProductDto productDto, Integer id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if (optionalProduct.isEmpty()) throw new ApplicationException("Product not found");
+        Product product = productMapper.dtoToEntity(productDto);
+        productRepository.save(product);
+    }
 }

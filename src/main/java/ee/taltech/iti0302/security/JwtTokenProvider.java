@@ -8,7 +8,10 @@ import java.util.Map;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JwtTokenProvider {
     public static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private static final long TOKEN_DURATION = 3600000;
