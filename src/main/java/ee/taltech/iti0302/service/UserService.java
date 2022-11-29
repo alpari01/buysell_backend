@@ -42,7 +42,7 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         User user = optionalUser.orElseThrow(() -> new ApplicationException("User not found"));
         if (bCryptPasswordEncoder.matches(password, user.getPassword())) {
-            return new LoginResponse(JwtTokenProvider.generateToken(email));
+            return new LoginResponse(JwtTokenProvider.generateToken(email, user.getId()));
         } else {
             throw new ApplicationException("Wrong email or password");
         }
