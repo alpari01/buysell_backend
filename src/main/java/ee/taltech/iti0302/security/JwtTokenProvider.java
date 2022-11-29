@@ -13,11 +13,12 @@ public class JwtTokenProvider {
     public static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private static final long TOKEN_DURATION = 3600000;
 
-    public static String generateToken(String email) {
+    public static String generateToken(String email, Integer id) {
         long currentTimeMs = System.currentTimeMillis();
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", email);
+        claims.put("id", id);
 
         return Jwts.builder()
             .setSubject("subject")
