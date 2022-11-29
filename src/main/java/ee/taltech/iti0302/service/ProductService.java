@@ -1,6 +1,7 @@
 package ee.taltech.iti0302.service;
 
 import ee.taltech.iti0302.dto.ProductDto;
+import ee.taltech.iti0302.exception.ApplicationException;
 import ee.taltech.iti0302.mapper.ProductMapper;
 import ee.taltech.iti0302.model.Product;
 import ee.taltech.iti0302.repository.ProductCriteriaRepository;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -33,5 +35,11 @@ public class ProductService {
         List<Product> productList = productCriteriaRepository.search(filter);
         Long count = productCriteriaRepository.searchCount(filter);
         return new ProductResponse(productMapper.toDtoList(productList), count);
+    }
+
+    public void deleteProductById(Integer id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        Product product = optionalProduct.orElseThrow(() -> new ApplicationException("Product not found"));
+        productRepository.deleteById(product.getId());
     }
 }
