@@ -25,3 +25,7 @@ Content-Type: application/json
 GET http://localhost:9000/api/users
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwidXNlck5hbWUiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTY2OTU1OTc2MSwiZXhwIjoxNjY5NTYzMzYxfQ.H0zTr087-LVaxes51LPd5g9cTCUx-b6JTWI9RIr_Lg4
+
+###
+DELETE http://localhost:9000/api/products/50
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5NzM0MjI2LCJleHAiOjE2Njk3Mzc4MjZ9.ScuVq3SpvOeCxNPflvgNVd1_oXCIasr6uF_s89f6EpE
