@@ -22,27 +22,6 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:9000/api/users
+GET http://localhost:9000/api/public/products3?page=3&orderBy=id&userId=56
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwidXNlck5hbWUiOiJ0ZXN0QGdtYWlsLmNvbSIsImlhdCI6MTY2OTU1OTc2MSwiZXhwIjoxNjY5NTYzMzYxfQ.H0zTr087-LVaxes51LPd5g9cTCUx-b6JTWI9RIr_Lg4
-
-###
-DELETE http://localhost:9000/api/products/50
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5NzM0MjI2LCJleHAiOjE2Njk3Mzc4MjZ9.ScuVq3SpvOeCxNPflvgNVd1_oXCIasr6uF_s89f6EpE
-
-###
-PUT http://localhost:9000/api/products/43
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5NzM1OTg4LCJleHAiOjE2Njk3Mzk1ODh9.ML4gxjIkCqVNi8Q4KlpZuVg3lqWxe6LJqtj0bZaNk-g
-
-{
-  "id": 42,
-  "userId": 57,
-  "name": "RARARARARA",
-  "description": "OJOJOJOJOJO"
-}
-
-###
-GET http://localhost:9000/api/products/56
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5NzM4NzY2LCJleHAiOjE2Njk3NDIzNjZ9.VrwCsQPhIby2Pup3rf-tNOlDm6NyLuBD1XYF3F1zwVE
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5ODE1NDM0LCJleHAiOjE2Njk4MTkwMzR9.RVsh7Ei8iDJjGjTA_g1fmM8HCqgL8nGosR1dF4S92GQ

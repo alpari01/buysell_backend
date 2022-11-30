@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductCriteriaRepository {
 
-    private static final int PAGE_SIZE = 10;
+    public static final int PAGE_SIZE = 10;
     private final EntityManager entityManager;
 
     public List<Product> search(ProductFilter filter) {

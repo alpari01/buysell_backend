@@ -47,8 +47,13 @@ public class ProductController {
     }
 
     @GetMapping("/api/public/products2")
-    public ProductResponse getProducts2(int page, String orderBy, String name) {
+    public ProductResponse filterProducts(int page, String orderBy, String name) {
         ProductFilter filter = new ProductFilter(page, orderBy, name);
-        return productService.search(filter);
+        return productService.filterProducts(filter);
+    }
+
+    @GetMapping("/api/public/products3")
+    public List<ProductDto> paginateProducts(int page, String orderBy, Integer userId) {
+        return productService.paginateProductsByUserId(page, orderBy, userId);
     }
 }

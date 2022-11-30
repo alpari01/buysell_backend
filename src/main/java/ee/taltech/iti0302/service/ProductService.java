@@ -11,10 +11,16 @@ import ee.taltech.iti0302.repository.ProductRepository;
 import ee.taltech.iti0302.repository.ProductResponse;
 import ee.taltech.iti0302.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static ee.taltech.iti0302.repository.ProductCriteriaRepository.PAGE_SIZE;
 
 @RequiredArgsConstructor
 @Service
@@ -34,7 +40,23 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public ProductResponse search(ProductFilter filter) {
+
+    public List<ProductDto> getProductsByUserId(Integer userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = optionalUser.orElseThrow(() -> new ApplicationException("User not found"));
+        return productMapper.toDtoList(user.getProducts());
+    }
+
+    public List<ProductDto> paginateProductsByUserId(int page, String orderBy, Integer userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = optionalUser.orElseThrow(() -> new ApplicationException("User not found"));
+        Sort sort = Sort.by(orderBy).ascending();
+        Pageable pageRequest = PageRequest.of(page, PAGE_SIZE, sort);
+        List<Product> products = productRepository.findAllByUserId(user.getId(), pageRequest);
+        return productMapper.toDtoList(products);
+    }
+
+    public ProductResponse filterProducts(ProductFilter filter) {
         List<Product> productList = productCriteriaRepository.search(filter);
         Long count = productCriteriaRepository.searchCount(filter);
         return new ProductResponse(productMapper.toDtoList(productList), count);
@@ -51,11 +73,5 @@ public class ProductService {
         if (optionalProduct.isEmpty()) throw new ApplicationException("Product not found");
         Product product = productMapper.dtoToEntity(productDto);
         productRepository.save(product);
-    }
-
-    public List<ProductDto> getProductsByUserId(Integer userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        User user = optionalUser.orElseThrow(() -> new ApplicationException("User not found"));
-        return productMapper.toDtoList(user.getProducts());
     }
 }
