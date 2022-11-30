@@ -13,7 +13,6 @@ import ee.taltech.iti0302.repository.ProductRepository;
 import ee.taltech.iti0302.repository.ProductResponse;
 import ee.taltech.iti0302.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
