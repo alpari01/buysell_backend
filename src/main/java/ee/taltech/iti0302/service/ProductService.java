@@ -4,14 +4,15 @@ import ee.taltech.iti0302.dto.ProductDto;
 import ee.taltech.iti0302.exception.ApplicationException;
 import ee.taltech.iti0302.mapper.ProductMapper;
 import ee.taltech.iti0302.model.Product;
+import ee.taltech.iti0302.model.ProductCategory;
 import ee.taltech.iti0302.model.User;
+import ee.taltech.iti0302.repository.ProductCategoryRepository;
 import ee.taltech.iti0302.repository.ProductCriteriaRepository;
 import ee.taltech.iti0302.repository.ProductFilter;
 import ee.taltech.iti0302.repository.ProductRepository;
 import ee.taltech.iti0302.repository.ProductResponse;
 import ee.taltech.iti0302.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,6 +29,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+    private final ProductCategoryRepository productCategoryRepository;
     private final ProductMapper productMapper;
     private final ProductCriteriaRepository productCriteriaRepository;
 
@@ -37,9 +39,11 @@ public class ProductService {
 
     public void addProduct(ProductDto productDto) {
         Product product = productMapper.dtoToEntity(productDto);
+        Optional<ProductCategory> optionalProductCategory = productCategoryRepository.findProductCategoryByName(productDto.getCategoryName());
+        ProductCategory productCategory = optionalProductCategory.orElseThrow(() -> new ApplicationException("Product category not found"));
+        product.setCategoryId(productCategory.getId());
         productRepository.save(product);
     }
-
 
     public List<ProductDto> getProductsByUserId(Integer userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
@@ -72,6 +76,9 @@ public class ProductService {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isEmpty()) throw new ApplicationException("Product not found");
         Product product = productMapper.dtoToEntity(productDto);
+        Optional<ProductCategory> optionalProductCategory = productCategoryRepository.findProductCategoryByName(productDto.getCategoryName());
+        ProductCategory productCategory = optionalProductCategory.orElseThrow(() -> new ApplicationException("Product category not found"));
+        product.setCategoryId(productCategory.getId());
         productRepository.save(product);
     }
 }

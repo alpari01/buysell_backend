@@ -15,12 +15,22 @@ public class Product {
     @Basic(optional = false)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
+
     @Column(name = "user_id")
     private Integer userId;
+
     private String name;
     private String description;
+
+    @Column(name = "category_id")
+    private Integer categoryId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable=false, updatable=false)
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", insertable=false, updatable=false)
+    private ProductCategory productCategory;
+
 }

@@ -95,4 +95,19 @@
     <changeSet  author="Alan Parik"  id="14">
         <renameColumn tableName="product" oldColumnName="userId" newColumnName="user_id" />
     </changeSet>
+
+    <changeSet author="Ilja Lastovko" id="15">
+        <createTable tableName="product_category">
+            <column  name="id"  type="SERIAL">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="name" type="text" />
+        </createTable>
+
+        <addColumn tableName="product">
+            <column name="category_id" type="INTEGER">
+                <constraints nullable="false" foreignKeyName="fk_product_product_category" references="product_category(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
