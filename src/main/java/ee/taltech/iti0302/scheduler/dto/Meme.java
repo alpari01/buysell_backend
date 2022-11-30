@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class Meme {
 
-    private String url;
+    private String message;
 }
