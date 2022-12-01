@@ -1,9 +1,11 @@
 package ee.taltech.iti0302.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
 
+@Builder
 @Data
 public class UserDto {
 

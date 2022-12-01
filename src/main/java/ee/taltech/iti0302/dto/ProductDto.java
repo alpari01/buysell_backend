@@ -1,7 +1,9 @@
 package ee.taltech.iti0302.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
+@Builder
 @Data
 public class ProductDto {
 
