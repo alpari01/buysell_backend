@@ -16,7 +16,7 @@ public class TradeController {
 
     private final TradeService tradeService;
 
-    @GetMapping("/api/public/trades")
+    @GetMapping("/api/trades")
     public List<TradeDto> getTrades() {
         return tradeService.getTrades();
     }
