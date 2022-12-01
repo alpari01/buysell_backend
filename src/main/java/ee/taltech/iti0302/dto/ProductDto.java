@@ -10,5 +10,6 @@ public class ProductDto {
     private String name;
     private String description;
     private Integer categoryId;
+    private Integer tradeId;
     private String categoryName;
 }

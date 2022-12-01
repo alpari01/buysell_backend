@@ -25,6 +25,9 @@ public class Product {
     @Column(name = "category_id")
     private Integer categoryId;
 
+    @Column(name = "trade_id", insertable=false, updatable=false)
+    private Integer tradeId;
+
     @ManyToOne
     @JoinColumn(name = "user_id", insertable=false, updatable=false)
     private User user;
@@ -33,4 +36,6 @@ public class Product {
     @JoinColumn(name = "category_id", insertable=false, updatable=false)
     private ProductCategory productCategory;
 
+    @OneToOne
+    private Trade trade;
 }

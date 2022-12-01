@@ -33,4 +33,10 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Product> products;
+
+    @OneToMany(mappedBy = "buyer")
+    private List<Trade> buyerTrades;
+
+    @OneToMany(mappedBy = "seller")
+    private List<Trade> sellerTrades;
 }
