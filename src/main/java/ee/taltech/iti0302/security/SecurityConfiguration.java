@@ -26,6 +26,11 @@ public class SecurityConfiguration {
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeRequests()
             .antMatchers("/api/public/**").permitAll()
+            .antMatchers( "/swagger-resources/**",
+                    "/swagger-ui.html",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/webjars/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .sessionManagement()
