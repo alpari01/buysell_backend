@@ -110,4 +110,30 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet author="Alan Parik" id="16">
+        <createTable tableName="trade">
+            <column name="id"  type="SERIAL">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="buyer_id" type="INTEGER">
+                <constraints nullable="false" foreignKeyName="fk_trade_users_buyer" references="users(id)"/>
+            </column>
+            <column name="seller_id" type="INTEGER">
+                <constraints nullable="false" foreignKeyName="fk_trade_users_seller" references="users(id)"/>
+            </column>
+            <column name="product_id" type="INTEGER">
+                <constraints nullable="false" foreignKeyName="fk_trade_product" references="product(id)"/>
+            </column>
+            <column name="date"  type="date"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Alan Parik" id="17">
+        <addColumn tableName="product">
+            <column name="trade_id" type="INTEGER">
+                <constraints nullable="true" foreignKeyName="fk_product_trade" references="trade(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
