@@ -18,7 +18,6 @@ public class TradeController {
 
     @GetMapping("/api/public/trades")
     public List<TradeDto> getTrades() {
-        System.out.println("get trades mapping");
         return tradeService.getTrades();
     }
 
