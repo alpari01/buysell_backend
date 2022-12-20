@@ -27,6 +27,7 @@ public class Product {
 
     private String name;
     private String description;
+    private Double price;
 
     @Column(name = "category_id")
     private Integer categoryId;

@@ -11,6 +11,7 @@ public class ProductDto {
     private Integer userId;
     private String name;
     private String description;
+    private Double price;
     private Integer categoryId;
     private Integer tradeId;
     private String categoryName;
