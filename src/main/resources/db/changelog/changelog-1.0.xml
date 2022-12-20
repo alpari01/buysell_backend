@@ -136,4 +136,11 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet author="Alan Parik" id="18">
+        <addColumn tableName="product">
+            <column name="price" type="DOUBLE PRECISION">
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
