@@ -4,7 +4,7 @@ import ee.taltech.iti0302.dto.ProductDto;
 import ee.taltech.iti0302.mapper.ProductMapper;
 import ee.taltech.iti0302.mapper.ProductMapperImpl;
 import ee.taltech.iti0302.model.Product;
-import ee.taltech.iti0302.repository.ProductRepository;
+import ee.taltech.iti0302.repository.product.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -36,6 +36,7 @@ public class User {
     private String password;
     private LocalDate birthdate;
     private String gender;
+    private Double balance;
 
     @OneToMany(mappedBy = "user")
     private List<Product> products;

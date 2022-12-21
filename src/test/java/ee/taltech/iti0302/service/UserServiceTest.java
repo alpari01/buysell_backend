@@ -4,7 +4,7 @@ import ee.taltech.iti0302.dto.UserDto;
 import ee.taltech.iti0302.mapper.UserMapper;
 import ee.taltech.iti0302.mapper.UserMapperImpl;
 import ee.taltech.iti0302.model.User;
-import ee.taltech.iti0302.repository.UserRepository;
+import ee.taltech.iti0302.repository.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

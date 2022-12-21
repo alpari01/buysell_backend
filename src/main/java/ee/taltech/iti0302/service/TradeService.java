@@ -2,7 +2,7 @@ package ee.taltech.iti0302.service;
 
 import ee.taltech.iti0302.dto.TradeDto;
 import ee.taltech.iti0302.mapper.TradeMapper;
-import ee.taltech.iti0302.repository.TradeRepository;
+import ee.taltech.iti0302.repository.trade.TradeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

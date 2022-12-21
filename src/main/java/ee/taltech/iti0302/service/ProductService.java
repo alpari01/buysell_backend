@@ -6,12 +6,12 @@ import ee.taltech.iti0302.mapper.ProductMapper;
 import ee.taltech.iti0302.model.Product;
 import ee.taltech.iti0302.model.ProductCategory;
 import ee.taltech.iti0302.model.User;
-import ee.taltech.iti0302.repository.ProductCategoryRepository;
-import ee.taltech.iti0302.repository.ProductCriteriaRepository;
-import ee.taltech.iti0302.repository.ProductFilter;
-import ee.taltech.iti0302.repository.ProductRepository;
-import ee.taltech.iti0302.repository.ProductResponse;
-import ee.taltech.iti0302.repository.UserRepository;
+import ee.taltech.iti0302.repository.product.ProductCategoryRepository;
+import ee.taltech.iti0302.repository.product.ProductCriteriaRepository;
+import ee.taltech.iti0302.repository.product.ProductFilter;
+import ee.taltech.iti0302.repository.product.ProductRepository;
+import ee.taltech.iti0302.repository.product.ProductResponse;
+import ee.taltech.iti0302.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static ee.taltech.iti0302.repository.ProductCriteriaRepository.PAGE_SIZE;
+import static ee.taltech.iti0302.repository.product.ProductCriteriaRepository.PAGE_SIZE;
 
 @RequiredArgsConstructor
 @Service
