@@ -22,7 +22,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private static final String EXCEPTION_USER_NOT_FOUND_MESSAGE = "User not found";
+    public static final String EXCEPTION_USER_NOT_FOUND_MESSAGE = "User not found";
 
     public List<UserDto> getUsers() {
         return userMapper.toDtoList(userRepository.findAll());
