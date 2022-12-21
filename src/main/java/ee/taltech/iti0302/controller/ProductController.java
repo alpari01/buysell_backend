@@ -26,6 +26,11 @@ public class ProductController {
         return productService.getProducts();
     }
 
+    @GetMapping("/api/public/product/{id}")
+    public ProductDto getProductById(@PathVariable("id") Integer id) {
+        return productService.getProductById(id);
+    }
+
     @GetMapping("/api/public/products/{userId}")
     public List<ProductDto> getProductsByUserId(@PathVariable("userId") Integer id) {
         return productService.getProductsByUserId(id);
