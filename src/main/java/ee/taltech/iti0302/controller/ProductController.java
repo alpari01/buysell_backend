@@ -1,8 +1,8 @@
 package ee.taltech.iti0302.controller;
 
 import ee.taltech.iti0302.dto.ProductDto;
-import ee.taltech.iti0302.repository.ProductFilter;
-import ee.taltech.iti0302.repository.ProductResponse;
+import ee.taltech.iti0302.repository.product.ProductFilter;
+import ee.taltech.iti0302.repository.product.ProductResponse;
 import ee.taltech.iti0302.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;

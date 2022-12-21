@@ -143,4 +143,11 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet author="Alan Parik" id="19">
+        <addColumn tableName="users">
+            <column name="balance" type="DOUBLE PRECISION">
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

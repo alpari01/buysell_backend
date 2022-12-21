@@ -1,6 +1,7 @@
 package ee.taltech.iti0302.controller;
 
 import ee.taltech.iti0302.dto.UserDto;
+import ee.taltech.iti0302.repository.user.UserBalanceRequest;
 import ee.taltech.iti0302.security.LoginRequest;
 import ee.taltech.iti0302.security.LoginResponse;
 import ee.taltech.iti0302.service.UserService;
@@ -33,5 +34,10 @@ public class UserController {
     @PostMapping("/api/public/login")
     public LoginResponse login(@RequestBody LoginRequest request) {
         return userService.login(request.getEmail(), request.getPassword());
+    }
+
+    @PutMapping("/api/users/{id}")
+    public void addBalance(@RequestBody UserBalanceRequest userBalanceRequest, @PathVariable("id") Integer id) {
+        userService.addBalance(userBalanceRequest, id);
     }
 }

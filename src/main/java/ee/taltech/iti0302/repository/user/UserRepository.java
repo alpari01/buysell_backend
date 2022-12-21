@@ -1,4 +1,4 @@
-package ee.taltech.iti0302.repository;
+package ee.taltech.iti0302.repository.user;
 
 import ee.taltech.iti0302.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

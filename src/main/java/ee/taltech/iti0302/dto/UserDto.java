@@ -16,4 +16,5 @@ public class UserDto {
     private String password;
     private LocalDate birthdate;
     private String gender;
+    private Double balance;
 }
