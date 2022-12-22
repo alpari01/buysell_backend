@@ -9,4 +9,5 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findAllByUserId(Integer userId, Pageable pageable);
+    List<Product> findAllByTradeIdIsNull(Pageable pageable);
 }

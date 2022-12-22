@@ -3,11 +3,11 @@ POST http://localhost:9000/api/public/users
 Content-Type: application/json
 
 {
-  "firstName": "Test",
-  "lastName": "Test",
-  "email": "test@gmail.com",
+  "firstName": "Test1",
+  "lastName": "Test1",
+  "email": "test1@gmail.com",
   "birthdate": "1970-01-01",
-  "password": "test",
+  "password": "test1",
   "gender": "Male"
 }
 
@@ -39,4 +39,25 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjY5ODE1NDM0LCJleHAiOjE2Njk4MTkwMzR9.RVsh7Ei8iDJjGjTA_g1fmM8HCqgL8nGosR1dF4S92GQ
 
 ###
-GET http://localhost:9000/api/public/trades
+POST http://localhost:8080/api/trades
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU4LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjcxNzEyOTc0LCJleHAiOjE2NzE3MTY1NzR9.pm5zB3eCkIGKnqQ9awW2KXeZvunA6CoYNsCBUaDdlQ4
+
+{
+  "buyerId": 58,
+  "sellerId": 60,
+  "productId": 144,
+  "date": null
+}
+
+###
+GET http://localhost:8080/api/public/products4?page=1&orderBy=id
+
+###
+PUT http://localhost:8080/api/public/products2/151
+Content-Type: application/json
+
+{
+  "tradeId": 17
+}
+

@@ -52,8 +52,7 @@ public class UserService {
 
     public void addBalance(UserBalanceRequest userBalanceRequest, Integer id) {
         Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isEmpty()) throw new ApplicationException(EXCEPTION_USER_NOT_FOUND_MESSAGE);
-        User user = optionalUser.get();
+        User user = optionalUser.orElseThrow(() -> new ApplicationException(EXCEPTION_USER_NOT_FOUND_MESSAGE));
         user.setBalance(userBalanceRequest.getBalance());
         userRepository.save(user);
     }
