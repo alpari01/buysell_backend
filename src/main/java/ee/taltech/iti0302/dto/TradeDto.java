@@ -12,6 +12,5 @@ public class TradeDto {
     private Integer id;
     private Integer buyerId;
     private Integer sellerId;
-    private Integer productId;
     private LocalDate date;
 }
