@@ -1,7 +1,6 @@
 package ee.taltech.iti0302.service;
 
 import ee.taltech.iti0302.dto.ProductDto;
-import ee.taltech.iti0302.dto.UserDto;
 import ee.taltech.iti0302.exception.ApplicationException;
 import ee.taltech.iti0302.mapper.ProductMapper;
 import ee.taltech.iti0302.model.Product;
@@ -12,6 +11,7 @@ import ee.taltech.iti0302.repository.product.ProductCriteriaRepository;
 import ee.taltech.iti0302.repository.product.ProductFilter;
 import ee.taltech.iti0302.repository.product.ProductRepository;
 import ee.taltech.iti0302.repository.product.ProductResponse;
+import ee.taltech.iti0302.repository.product.ProductTradeIdRequest;
 import ee.taltech.iti0302.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -90,5 +90,20 @@ public class ProductService {
         ProductCategory productCategory = optionalProductCategory.orElseThrow(() -> new ApplicationException(EXCEPTION_PRODUCT_CATEGORY_NOT_FOUND_MESSAGE));
         product.setCategoryId(productCategory.getId());
         productRepository.save(product);
+    }
+
+    public void updateProductTradeId (ProductTradeIdRequest productTradeIdRequest, Integer id) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        Product product = optionalProduct.orElseThrow(() -> new ApplicationException(EXCEPTION_PRODUCT_NOT_FOUND_MESSAGE));
+        product.setTradeId(productTradeIdRequest.getTradeId());
+        System.out.println(product);
+        productRepository.save(product);
+    }
+
+    public List<ProductDto> paginateProductsByTradeIdIsNotNull(int page, String orderBy) {
+        Sort sort = Sort.by(orderBy).ascending();
+        Pageable pageRequest = PageRequest.of(page, PAGE_SIZE, sort);
+        List<Product> products = productRepository.findAllByTradeIdIsNull(pageRequest);
+        return productMapper.toDtoList(products);
     }
 }

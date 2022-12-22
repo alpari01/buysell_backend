@@ -27,13 +27,14 @@ public class Product {
 
     private String name;
     private String description;
-    private Double price;
 
     @Column(name = "category_id")
     private Integer categoryId;
 
-    @Column(name = "trade_id", insertable=false, updatable=false)
+    @Column(name = "trade_id")
     private Integer tradeId;
+
+    private Double price;
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable=false, updatable=false)
@@ -44,5 +45,6 @@ public class Product {
     private ProductCategory productCategory;
 
     @OneToOne
+    @JoinColumn(name = "trade_id", insertable=false, updatable=false)
     private Trade trade;
 }

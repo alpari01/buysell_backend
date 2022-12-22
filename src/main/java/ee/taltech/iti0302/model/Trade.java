@@ -29,9 +29,6 @@ public class Trade {
     @Column(name = "seller_id")
     private Integer sellerId;
 
-    @Column(name = "product_id")
-    private Integer productId;
-
     private LocalDate date;
 
     @ManyToOne
@@ -42,7 +39,6 @@ public class Trade {
     @JoinColumn(name = "seller_id", insertable=false, updatable=false)
     private User seller;
 
-    @OneToOne
-    @JoinColumn(name = "product_id", insertable=false, updatable=false)
+    @OneToOne(mappedBy = "trade")
     private Product product;
 }
