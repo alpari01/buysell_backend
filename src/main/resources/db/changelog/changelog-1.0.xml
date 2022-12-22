@@ -150,4 +150,8 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet author="Ilja Lastovko" id="20">
+        <dropColumn tableName="trade" columnName="product_id"/>
+    </changeSet>
 </databaseChangeLog>
