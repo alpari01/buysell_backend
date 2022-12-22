@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @PutMapping("/api/users/{id}")
-    public void addBalance(@RequestBody UserBalanceRequest userBalanceRequest, @PathVariable("id") Integer id) {
-        userService.addBalance(userBalanceRequest, id);
+    public void changeBalance(@RequestBody UserBalanceRequest userBalanceRequest, @PathVariable("id") Integer id) {
+        userService.changeBalance(userBalanceRequest, id);
     }
 }
