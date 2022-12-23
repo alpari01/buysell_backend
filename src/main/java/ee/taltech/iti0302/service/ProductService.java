@@ -103,7 +103,6 @@ public class ProductService {
         Optional<Product> optionalProduct = productRepository.findById(id);
         Product product = optionalProduct.orElseThrow(() -> new ApplicationException(EXCEPTION_PRODUCT_NOT_FOUND_MESSAGE));
         product.setTradeId(productTradeIdRequest.getTradeId());
-        System.out.println(product);
         productRepository.save(product);
     }
 
