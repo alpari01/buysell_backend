@@ -36,6 +36,9 @@ public class Product {
 
     private Double price;
 
+    @Column(name = "image_id")
+    private Integer imageId;
+
     @ManyToOne
     @JoinColumn(name = "user_id", insertable=false, updatable=false)
     private User user;
@@ -47,4 +50,8 @@ public class Product {
     @OneToOne
     @JoinColumn(name = "trade_id", insertable=false, updatable=false)
     private Trade trade;
+
+    @OneToOne
+    @JoinColumn(name = "image_id", insertable=false, updatable=false)
+    private Image image;
 }

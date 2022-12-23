@@ -15,4 +15,5 @@ public class ProductDto {
     private Integer categoryId;
     private Integer tradeId;
     private String categoryName;
+    private Integer imageId;
 }
