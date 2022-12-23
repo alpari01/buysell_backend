@@ -71,9 +71,9 @@ public class ProductService {
     public List<ProductDto> paginateProductsByUserId(int page, String orderBy, Integer userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         User user = optionalUser.orElseThrow(() -> new ApplicationException(EXCEPTION_USER_NOT_FOUND_MESSAGE));
-        Sort sort = Sort.by(orderBy).ascending();
+        Sort sort = Sort.by(orderBy).descending();
         Pageable pageRequest = PageRequest.of(page, PAGE_SIZE, sort);
-        List<Product> products = productRepository.findAllByUserId(user.getId(), pageRequest);
+        List<Product> products = productRepository.findAllByUserIdAndTradeIdIsNull(user.getId(), pageRequest);
         return productMapper.toDtoList(products);
     }
 
@@ -107,7 +107,7 @@ public class ProductService {
     }
 
     public List<ProductDto> paginateProductsByTradeIdIsNotNull(int page, String orderBy) {
-        Sort sort = Sort.by(orderBy).ascending();
+        Sort sort = Sort.by(orderBy).descending();
         Pageable pageRequest = PageRequest.of(page, PAGE_SIZE, sort);
         List<Product> products = productRepository.findAllByTradeIdIsNull(pageRequest);
         return productMapper.toDtoList(products);
