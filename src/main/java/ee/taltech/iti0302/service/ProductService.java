@@ -3,9 +3,11 @@ package ee.taltech.iti0302.service;
 import ee.taltech.iti0302.dto.ProductDto;
 import ee.taltech.iti0302.exception.ApplicationException;
 import ee.taltech.iti0302.mapper.ProductMapper;
+import ee.taltech.iti0302.model.Image;
 import ee.taltech.iti0302.model.Product;
 import ee.taltech.iti0302.model.ProductCategory;
 import ee.taltech.iti0302.model.User;
+import ee.taltech.iti0302.repository.image.ImageRepository;
 import ee.taltech.iti0302.repository.product.ProductCategoryRepository;
 import ee.taltech.iti0302.repository.product.ProductCriteriaRepository;
 import ee.taltech.iti0302.repository.product.ProductFilter;
@@ -31,6 +33,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+    private final ImageRepository imageRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final ProductMapper productMapper;
     private final ProductCriteriaRepository productCriteriaRepository;
@@ -52,6 +55,10 @@ public class ProductService {
         Optional<ProductCategory> optionalProductCategory = productCategoryRepository.findProductCategoryByName(productDto.getCategoryName());
         ProductCategory productCategory = optionalProductCategory.orElseThrow(() -> new ApplicationException(EXCEPTION_PRODUCT_CATEGORY_NOT_FOUND_MESSAGE));
         product.setCategoryId(productCategory.getId());
+
+        Image image = imageRepository.findTopByOrderByIdDesc();
+        product.setImageId(image.getId());
+
         productRepository.save(product);
     }
 
@@ -96,7 +103,6 @@ public class ProductService {
         Optional<Product> optionalProduct = productRepository.findById(id);
         Product product = optionalProduct.orElseThrow(() -> new ApplicationException(EXCEPTION_PRODUCT_NOT_FOUND_MESSAGE));
         product.setTradeId(productTradeIdRequest.getTradeId());
-        System.out.println(product);
         productRepository.save(product);
     }
 

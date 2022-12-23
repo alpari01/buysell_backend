@@ -154,4 +154,40 @@
     <changeSet author="Ilja Lastovko" id="20">
         <dropColumn tableName="trade" columnName="product_id"/>
     </changeSet>
+
+    <changeSet author="Ilja Lastovko" id="21">
+        <createTable tableName="image">
+            <column name="name"  type="text" />
+            <column name="original_file_name"  type="text" />
+            <column name="size"  type="INTEGER" />
+            <column name="contentType"  type="text" />
+            <column name="bytes"  type="bytea" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Ilja Lastovko" id="22">
+        <dropTable tableName="image"/>
+    </changeSet>
+
+    <changeSet author="Ilja Lastovko" id="23">
+        <createTable tableName="image">
+            <column name="id"  type="SERIAL">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="name"  type="text" />
+            <column name="original_file_name"  type="text" />
+            <column name="size"  type="INTEGER" />
+            <column name="contentType"  type="text" />
+            <column name="bytes"  type="bytea" />
+        </createTable>
+        <addColumn tableName="product">
+            <column name="image_id" type="INTEGER">
+                <constraints nullable="true" foreignKeyName="fk_product_image" references="image(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="Ilja Lastovko" id="24">
+        <renameColumn tableName="image" oldColumnName="contentType" newColumnName="content_type"/>
+    </changeSet>
 </databaseChangeLog>
