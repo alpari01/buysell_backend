@@ -3,7 +3,6 @@ package ee.taltech.iti0302.controller;
 import ee.taltech.iti0302.dto.ProductDto;
 import ee.taltech.iti0302.repository.product.ProductFilter;
 import ee.taltech.iti0302.repository.product.ProductResponse;
-import ee.taltech.iti0302.repository.product.ProductTradeIdRequest;
 import ee.taltech.iti0302.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,17 +58,12 @@ public class ProductController {
     }
 
     @GetMapping("/api/public/products3")
-    public List<ProductDto> paginateProducts(int page, String orderBy, Integer userId) {
-        return productService.paginateProductsByUserId(page, orderBy, userId);
+    public List<ProductDto> paginateProductsByUserIdByTradeIdIsNotNull(int page, String orderBy, Integer userId) {
+        return productService.paginateProductsByUserIdByTradeIdIsNotNull(page, orderBy, userId);
     }
 
     @GetMapping("/api/public/products4")
     public List<ProductDto> paginateProductsByTradeIdIsNotNull(int page, String orderBy) {
         return productService.paginateProductsByTradeIdIsNotNull(page, orderBy);
-    }
-
-    @PutMapping("/api/public/products2/{productId}")
-    public void updateProductTradeId(@RequestBody ProductTradeIdRequest productTradeIdRequest, @PathVariable("productId") Integer id) {
-        productService.updateProductTradeId(productTradeIdRequest, id);
     }
 }

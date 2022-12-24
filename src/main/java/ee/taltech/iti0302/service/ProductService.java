@@ -13,7 +13,6 @@ import ee.taltech.iti0302.repository.product.ProductCriteriaRepository;
 import ee.taltech.iti0302.repository.product.ProductFilter;
 import ee.taltech.iti0302.repository.product.ProductRepository;
 import ee.taltech.iti0302.repository.product.ProductResponse;
-import ee.taltech.iti0302.repository.product.ProductTradeIdRequest;
 import ee.taltech.iti0302.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -50,6 +49,12 @@ public class ProductService {
         return productMapper.entityToDto(product);
     }
 
+    public List<ProductDto> getProductsByUserId(Integer userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = optionalUser.orElseThrow(() -> new ApplicationException(EXCEPTION_USER_NOT_FOUND_MESSAGE));
+        return productMapper.toDtoList(user.getProducts());
+    }
+
     public void addProduct(ProductDto productDto) {
         Product product = productMapper.dtoToEntity(productDto);
         Optional<ProductCategory> optionalProductCategory = productCategoryRepository.findProductCategoryByName(productDto.getCategoryName());
@@ -60,27 +65,6 @@ public class ProductService {
         product.setImageId(image.getId());
 
         productRepository.save(product);
-    }
-
-    public List<ProductDto> getProductsByUserId(Integer userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        User user = optionalUser.orElseThrow(() -> new ApplicationException(EXCEPTION_USER_NOT_FOUND_MESSAGE));
-        return productMapper.toDtoList(user.getProducts());
-    }
-
-    public List<ProductDto> paginateProductsByUserId(int page, String orderBy, Integer userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        User user = optionalUser.orElseThrow(() -> new ApplicationException(EXCEPTION_USER_NOT_FOUND_MESSAGE));
-        Sort sort = Sort.by(orderBy).descending();
-        Pageable pageRequest = PageRequest.of(page, PAGE_SIZE, sort);
-        List<Product> products = productRepository.findAllByUserIdAndTradeIdIsNull(user.getId(), pageRequest);
-        return productMapper.toDtoList(products);
-    }
-
-    public ProductResponse filterProducts(ProductFilter filter) {
-        List<Product> productList = productCriteriaRepository.search(filter);
-        Long count = productCriteriaRepository.searchCount(filter);
-        return new ProductResponse(productMapper.toDtoList(productList), count);
     }
 
     public void deleteProductById(Integer id) {
@@ -99,11 +83,19 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void updateProductTradeId (ProductTradeIdRequest productTradeIdRequest, Integer id) {
-        Optional<Product> optionalProduct = productRepository.findById(id);
-        Product product = optionalProduct.orElseThrow(() -> new ApplicationException(EXCEPTION_PRODUCT_NOT_FOUND_MESSAGE));
-        product.setTradeId(productTradeIdRequest.getTradeId());
-        productRepository.save(product);
+    public ProductResponse filterProducts(ProductFilter filter) {
+        List<Product> productList = productCriteriaRepository.search(filter);
+        Long count = productCriteriaRepository.searchCount(filter);
+        return new ProductResponse(productMapper.toDtoList(productList), count);
+    }
+
+    public List<ProductDto> paginateProductsByUserIdByTradeIdIsNotNull(int page, String orderBy, Integer userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = optionalUser.orElseThrow(() -> new ApplicationException(EXCEPTION_USER_NOT_FOUND_MESSAGE));
+        Sort sort = Sort.by(orderBy).descending();
+        Pageable pageRequest = PageRequest.of(page, PAGE_SIZE, sort);
+        List<Product> products = productRepository.findAllByUserIdAndTradeIdIsNull(user.getId(), pageRequest);
+        return productMapper.toDtoList(products);
     }
 
     public List<ProductDto> paginateProductsByTradeIdIsNotNull(int page, String orderBy) {
