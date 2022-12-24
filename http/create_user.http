@@ -51,13 +51,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU4LCJlb
 }
 
 ###
-GET http://localhost:8080/api/public/products4?page=1&orderBy=id
-
-###
 PUT http://localhost:8080/api/public/products2/151
 Content-Type: application/json
 
 {
   "tradeId": 17
 }
+
+
+
+###
+GET http://localhost:8080/api/public/products3?page=1&orderBy=id&userId=58
+
 
