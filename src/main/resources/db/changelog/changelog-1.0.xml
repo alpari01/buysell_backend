@@ -190,4 +190,8 @@
     <changeSet author="Ilja Lastovko" id="24">
         <renameColumn tableName="image" oldColumnName="contentType" newColumnName="content_type"/>
     </changeSet>
+
+    <changeSet author="Ilja Lastovko" id="25">
+        <addUniqueConstraint tableName="users" columnNames="email"/>
+    </changeSet>
 </databaseChangeLog>
