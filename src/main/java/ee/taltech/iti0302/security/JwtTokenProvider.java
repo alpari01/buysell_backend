@@ -10,7 +10,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JwtTokenProvider {
     public static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
@@ -23,6 +25,7 @@ public class JwtTokenProvider {
         claims.put("email", email);
         claims.put("id", id);
 
+        log.info("Generating token");
         return Jwts.builder()
             .setSubject("subject")
             .addClaims(claims)

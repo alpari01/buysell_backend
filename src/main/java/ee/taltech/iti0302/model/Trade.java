@@ -5,10 +5,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@ToString
 @Getter @Setter
 @Builder
 @NoArgsConstructor
@@ -31,14 +33,17 @@ public class Trade {
 
     private LocalDate date;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "buyer_id", insertable=false, updatable=false)
     private User buyer;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "seller_id", insertable=false, updatable=false)
     private User seller;
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "trade")
     private Product product;
 }

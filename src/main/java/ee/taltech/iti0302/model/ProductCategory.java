@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
+@ToString
 @Getter @Setter
 @Builder
 @NoArgsConstructor
@@ -31,6 +33,7 @@ public class ProductCategory {
     private Integer id;
     private String name;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "productCategory")
     private List<Product> products;
 }

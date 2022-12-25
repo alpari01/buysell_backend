@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Basic;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+@ToString
 @Getter @Setter
 @Builder
 @NoArgsConstructor
@@ -39,9 +41,11 @@ public class Image {
     @Column(name = "content_type")
     private String contentType;
 
+    @ToString.Exclude
     @Type(type="org.hibernate.type.BinaryType")
     private byte[] bytes;
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "image")
     private Product product;
 }

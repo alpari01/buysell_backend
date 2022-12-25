@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 
+@ToString
 @Getter @Setter
 @Builder
 @NoArgsConstructor
@@ -38,12 +40,15 @@ public class User {
     private String gender;
     private Double balance;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<Product> products;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "buyer")
     private List<Trade> buyerTrades;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "seller")
     private List<Trade> sellerTrades;
 }
