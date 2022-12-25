@@ -3,7 +3,10 @@ package ee.taltech.iti0302.service;
 import ee.taltech.iti0302.dto.UserDto;
 import ee.taltech.iti0302.mapper.UserMapper;
 import ee.taltech.iti0302.mapper.UserMapperImpl;
+import ee.taltech.iti0302.model.Product;
+import ee.taltech.iti0302.model.Trade;
 import ee.taltech.iti0302.model.User;
+import ee.taltech.iti0302.repository.user.UserBalanceRequest;
 import ee.taltech.iti0302.repository.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,9 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Spy
     private UserMapper userMapper = new UserMapperImpl();
 
@@ -33,7 +40,7 @@ class UserServiceTest {
     private UserService userService;
 
     @Test
-    void getUsers() {
+    void getUsersExist() {
         // given
         User user1 = User.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
         User user2 = User.builder().id(2).firstName("Alan").lastName("Parik").build();
@@ -46,8 +53,8 @@ class UserServiceTest {
         var result = userService.getUsers();
 
         // then
-        then(userMapper).should().toDtoList(users);
         then(userRepository).should().findAll();
+        then(userMapper).should().toDtoList(users);
         UserDto userDto1 = UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
         UserDto userDto2 = UserDto.builder().id(2).firstName("Alan").lastName("Parik").build();
         UserDto userDto3 = UserDto.builder().id(3).firstName("Mart").lastName("Hütt").build();
@@ -57,7 +64,7 @@ class UserServiceTest {
     }
 
     @Test
-    void getUserById() {
+    void getUserByIdExists() {
         // given
         User user = User.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
         given(userRepository.findById(1)).willReturn(Optional.of(user));
@@ -66,8 +73,46 @@ class UserServiceTest {
         var result = userService.getUserById(1);
 
         // then
-        then(userMapper).should().entityToDto(user);
         then(userRepository).should().findById(1);
+        then(userMapper).should().entityToDto(user);
         assertEquals(UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").build(), result);
+    }
+
+    @Test
+    void createUserIsCorrect() {
+        // given
+        UserDto userDto = UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
+
+        User user = User.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
+
+        given(userMapper.dtoToEntity(userDto)).willReturn(user);
+        given(userRepository.findById(1)).willReturn(Optional.of(user));
+
+        // when
+        userService.createUser(userDto);
+        var result = userService.getUserById(1);
+
+        // then
+        then(userMapper).should().dtoToEntity(userDto);
+        then(userRepository).should().save(user);
+        assertEquals(userDto, result);
+    }
+
+    @Test
+    void changeBalanceIsCorrect() {
+        // given
+        User user = User.builder().id(1).firstName("Ilja").lastName("Lastovko").balance(100.0).build();
+        given(userRepository.findById(1)).willReturn(Optional.of(user));
+
+        // when
+        UserBalanceRequest userBalanceRequest = new UserBalanceRequest();
+        userBalanceRequest.setBalance(200.0);
+        userService.changeBalance(userBalanceRequest, 1);
+        UserDto userDto = userService.getUserById(1);
+        var result = userDto.getBalance();
+
+        // then
+        then(userRepository).should().save(user);
+        assertEquals(200, result);
     }
 }
