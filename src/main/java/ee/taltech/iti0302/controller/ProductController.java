@@ -1,8 +1,6 @@
 package ee.taltech.iti0302.controller;
 
 import ee.taltech.iti0302.dto.ProductDto;
-import ee.taltech.iti0302.repository.product.ProductFilter;
-import ee.taltech.iti0302.repository.product.ProductResponse;
 import ee.taltech.iti0302.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -57,13 +55,6 @@ public class ProductController {
     public void updateProduct(@RequestBody ProductDto productDto, @PathVariable("productId") Integer id) {
         log.info("Updating product by id by PutMapping /api/public/products/{}", id);
         productService.updateProductById(productDto, id);
-    }
-
-    @GetMapping("/api/public/products2")
-    public ProductResponse filterProducts(int page, String orderBy, String name) {
-        ProductFilter filter = new ProductFilter(page, orderBy, name);
-        log.info("Filtering products by name by GetMapping /api/public/products2");
-        return productService.filterProducts(filter);
     }
 
     @GetMapping("/api/public/products3")

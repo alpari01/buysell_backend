@@ -9,10 +9,7 @@ import ee.taltech.iti0302.model.ProductCategory;
 import ee.taltech.iti0302.model.User;
 import ee.taltech.iti0302.repository.image.ImageRepository;
 import ee.taltech.iti0302.repository.product.ProductCategoryRepository;
-import ee.taltech.iti0302.repository.product.ProductCriteriaRepository;
-import ee.taltech.iti0302.repository.product.ProductFilter;
 import ee.taltech.iti0302.repository.product.ProductRepository;
-import ee.taltech.iti0302.repository.product.ProductResponse;
 import ee.taltech.iti0302.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +21,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static ee.taltech.iti0302.repository.product.ProductCriteriaRepository.PAGE_SIZE;
 import static ee.taltech.iti0302.service.UserService.EXCEPTION_USER_NOT_FOUND_MESSAGE;
 
 @Slf4j
@@ -32,12 +28,12 @@ import static ee.taltech.iti0302.service.UserService.EXCEPTION_USER_NOT_FOUND_ME
 @Service
 public class ProductService {
 
+    private static final int PAGE_SIZE = 10;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
     private final ImageRepository imageRepository;
     private final ProductCategoryRepository productCategoryRepository;
     private final ProductMapper productMapper;
-    private final ProductCriteriaRepository productCriteriaRepository;
     public static final String EXCEPTION_PRODUCT_NOT_FOUND_MESSAGE = "Product not found";
     public static final String EXCEPTION_PRODUCT_CATEGORY_NOT_FOUND_MESSAGE = "Product category not found";
 
@@ -91,13 +87,6 @@ public class ProductService {
         product.setCategoryId(productCategory.getId());
         log.info("Updating product {}", product);
         productRepository.save(product);
-    }
-
-    public ProductResponse filterProducts(ProductFilter filter) {
-        List<Product> productList = productCriteriaRepository.search(filter);
-        Long count = productCriteriaRepository.searchCount(filter);
-        log.info("Getting {} products by filter", productList.size());
-        return new ProductResponse(productMapper.toDtoList(productList), count);
     }
 
     public List<ProductDto> paginateProductsByUserIdByTradeIdIsNotNull(int page, String orderBy, Integer userId) {
