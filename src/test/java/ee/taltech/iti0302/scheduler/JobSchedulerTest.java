@@ -29,7 +29,8 @@ class JobSchedulerTest {
     void getMemeUrl() {
 
         // given
-        Meme meme = Meme.builder().message("https://dog.ceo/api/breeds/image/random").build();
+        Meme meme = new Meme();
+        meme.setMessage("https://dog.ceo/api/breeds/image/random");
         given(restTemplate.getForObject(meme.getMessage(), Meme.class)).willReturn(meme);
 
         // when
