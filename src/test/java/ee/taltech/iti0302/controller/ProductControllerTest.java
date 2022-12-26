@@ -1,6 +1,6 @@
 package ee.taltech.iti0302.controller;
 
-import ee.taltech.iti0302.AbstractIntegrationTest;
+import ee.taltech.iti0302.AbstractIntegration;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.hasSize;
 @Transactional
 @SpringBootTest
 @AutoConfigureMockMvc
-class ProductControllerTest extends AbstractIntegrationTest {
+class ProductControllerTest extends AbstractIntegration {
 
     @Autowired
     private MockMvc mvc;

@@ -1,7 +1,6 @@
 package ee.taltech.iti0302.controller;
 
-import ee.taltech.iti0302.AbstractIntegrationTest;
-import liquibase.pro.packaged.S;
+import ee.taltech.iti0302.AbstractIntegration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -16,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 @SpringBootTest
 @AutoConfigureMockMvc
-class MemeControllerTest extends AbstractIntegrationTest {
+class MemeControllerTest extends AbstractIntegration {
 
     @Autowired
     private MockMvc mvc;

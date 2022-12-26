@@ -1,6 +1,6 @@
 package ee.taltech.iti0302.controller;
 
-import ee.taltech.iti0302.AbstractIntegrationTest;
+import ee.taltech.iti0302.AbstractIntegration;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerTest extends AbstractIntegrationTest {
+class UserControllerTest extends AbstractIntegration {
 
     @Autowired
     private MockMvc mvc;
