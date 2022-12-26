@@ -51,12 +51,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0IiwiaWQiOjU4LCJlb
 }
 
 ###
-PUT http://localhost:8080/api/public/products2/151
+GET http://localhost:9000/api/public/images/65
 Content-Type: application/json
 
-{
-  "tradeId": 17
-}
 
 
 
