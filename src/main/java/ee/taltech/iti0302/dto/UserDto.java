@@ -17,4 +17,6 @@ public class UserDto {
     private LocalDate birthdate;
     private String gender;
     private Double balance;
+    private Integer buyerTradesAmount;
+    private Integer sellerTradesAmount;
 }

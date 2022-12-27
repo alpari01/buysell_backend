@@ -55,10 +55,10 @@ class UserServiceTest {
         // then
         then(userRepository).should().findAll();
         then(userMapper).should().toDtoList(users);
-        UserDto userDto1 = UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
-        UserDto userDto2 = UserDto.builder().id(2).firstName("Alan").lastName("Parik").build();
-        UserDto userDto3 = UserDto.builder().id(3).firstName("Mart").lastName("Hütt").build();
-        UserDto userDto4 = UserDto.builder().id(4).firstName("Siim").lastName("Rebane").build();
+        UserDto userDto1 = UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").buyerTradesAmount(0).sellerTradesAmount(0).build();
+        UserDto userDto2 = UserDto.builder().id(2).firstName("Alan").lastName("Parik").buyerTradesAmount(0).sellerTradesAmount(0).build();
+        UserDto userDto3 = UserDto.builder().id(3).firstName("Mart").lastName("Hütt").buyerTradesAmount(0).sellerTradesAmount(0).build();
+        UserDto userDto4 = UserDto.builder().id(4).firstName("Siim").lastName("Rebane").buyerTradesAmount(0).sellerTradesAmount(0).build();
         List<UserDto> userDtos = new ArrayList<>(List.of(userDto1, userDto2, userDto3, userDto4));
         assertEquals(userDtos, result);
     }
@@ -75,13 +75,13 @@ class UserServiceTest {
         // then
         then(userRepository).should().findById(1);
         then(userMapper).should().entityToDto(user);
-        assertEquals(UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").build(), result);
+        assertEquals(UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").buyerTradesAmount(0).sellerTradesAmount(0).build(), result);
     }
 
     @Test
     void createUserIsCorrect() {
         // given
-        UserDto userDto = UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
+        UserDto userDto = UserDto.builder().id(1).firstName("Ilja").lastName("Lastovko").buyerTradesAmount(0).sellerTradesAmount(0).build();
 
         User user = User.builder().id(1).firstName("Ilja").lastName("Lastovko").build();
 
