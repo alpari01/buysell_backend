@@ -11,7 +11,7 @@ build backend:
   - main
  script:
   - ./mvnw clean package
-  - docker build -t web-project .
+  - docker build -t test .
 
 deploy backend:
  stage: deploy
