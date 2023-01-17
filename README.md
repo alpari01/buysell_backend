@@ -1,8 +1,10 @@
 ## What's this?
-**Backend** project for a [website](http://buysell.hopto.org) where people can sell their own products, as well as buy, comment and rate other people's products.
+**Backend** project for a [website](http://buysell.hopto.org) where people can sell their own products, as well as buy, comment and rate other people's products. \
+\
+([frontend](https://gitlab.cs.ttu.ee/illast/iti0302-2022-client))
 
 ## Technologies for development
-- **Java JDK 17, as programming language**
+- **Java JDK 17**, as programming language
 - Development environment suitable for the Java JDK (for example, **IntelliJ IDEA**)
 - **Docker**, to run the database locally
 - **Maven**, as a framework for automating project builds
