@@ -1,5 +1,5 @@
 ## What's this?
-**Backend** project for a http://buysell.hopto.org where people can buy and sell products. \
+**Backend** project for a http://buysell.hopto.org where people can buy and sell products.
 
 ## Technologies used
 - **Java JDK 17**, as programming language
