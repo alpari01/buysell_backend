@@ -1,9 +1,7 @@
 ## What's this?
-**Backend** project for a [website](http://buysell.hopto.org) where people can sell their own products, as well as buy, comment and rate other people's products. \
-\
-See also [frontend](https://gitlab.cs.ttu.ee/illast/iti0302-2022-client).
+**Backend** project for a http://buysell.hopto.org where people can buy and sell products. \
 
-## Technologies for development
+## Technologies used
 - **Java JDK 17**, as programming language
 - Development environment suitable for the Java JDK (for example, **IntelliJ IDEA**)
 - **Docker**, to run the database locally
@@ -12,7 +10,7 @@ See also [frontend](https://gitlab.cs.ttu.ee/illast/iti0302-2022-client).
 
 ## Config properties
 
-[application.properties](https://gitlab.cs.ttu.ee/alpari/iti0302-2022-server/-/blob/main/src/main/resources/application.properties)
+application properties -> https://github.com/Alpari01/buysell_backend/-/blob/main/src/main/resources/application.properties
 ```
 spring.datasource.url=jdbc:postgresql://${ip_address}:${port}/postgres
 spring.datasource.username=${username}
@@ -59,7 +57,3 @@ spring.liquibase.change-log= classpath:/db/changelog/changelog-master.xml
 ./mvnw clean packeage
 docker build -t ${tag_name} .
 ```
-
-## Website authors
-- **Ilja Lastovko**. Discord: Ilja Lastovko#1870
-- **Alan Parik**. Discord: APMeister#5717
