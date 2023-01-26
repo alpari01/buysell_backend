@@ -10,7 +10,6 @@
 
 ## Config properties
 
-application properties -> https://github.com/Alpari01/buysell_backend/-/blob/main/src/main/resources/application.properties
 ```
 spring.datasource.url=jdbc:postgresql://${ip_address}:${port}/postgres
 spring.datasource.username=${username}
