@@ -1,6 +1,8 @@
 ## What's this?
 **Backend** project for a http://buysell.hopto.org where people can buy and sell products.
 
+NB! This is only back-end part, there is a separate repository for front-end which is found here https://github.com/alpari01/buysell_frontend
+
 ## Technologies used
 - **Java JDK 17**, as programming language
 - Development environment suitable for the Java JDK (for example, **IntelliJ IDEA**)
